@@ -1,28 +1,29 @@
 function mayorQue(mensaje){
-    cara = parseInt(prompt(mensaje));
-    while(cara <0 || cara > 6){ 
+    ladoCara = parseInt(prompt(mensaje));
+    while(ladoCara <0 || ladoCara > 6){ 
         alert('ERROR EL DADO SOLO TIENE 6 CARAS DEL 1 AL 6')
-        cara = prompt(mensaje);
+        ladoCara = prompt(mensaje);
     }
-    return cara
+    return ladoCara
 }
 
 
-function igual(){
+function comprobarQue(){
     let hit = false
-    let i = 0
-    for (;i < cantidad; i++){
+    let veces = 0
+    for (let i = 0; i < cantidad; i++){
         var dado = Math.floor(Math.random()*6) + 1
         console.log('Valor del dado dados: ' + dado)
         if(dado === cara){
             hit = true
+            veces += 1 
         }
     }
     if(hit){
-        console.log('Hiteaste')
+        alert('Hiteaste ' + veces + ' veces')
     }
     else{
-        console.log('No hiteaste')
+        alert('No hiteaste')
     }
 }
 
@@ -30,6 +31,6 @@ function igual(){
 alert('Elegir una cara del dado')
 const cantidad= prompt('Cuantas veces quieres tirar el dado?');
 let cara = mayorQue('Cara:')
-igual()
+comprobarQue()
 console.log('La cara que elegiste: ' + cara)
 
