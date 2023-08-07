@@ -3,9 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Dado</title>
 </head>
 <body>
+    <div class="login-container">
+        <form id="loginForm">
+            <h2>¡Bienvenido!</h2>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
+            <label for="dinero">Dinero:</label>
+            <input type="number" id="dinero" required>
+            <button type="submit">Iniciar Juego</button>
+        </form>
+    </div>
+
+    <div class="conteiner" style="display: none;" id="conteiner" >
+        <div id="game">
+            <div class="opcion">
+                <label for="numeroElegido">Elige un número:</label>
+                <input type="number" id="numeroElegido" required>
+            </div>
+            <button id="tirar">!Tirar!</button>
+            <img id="dadoCara" src="" alt="Cara del dado" style="display: none;">
+            <div id="infCalienteFrio">
+                <p id="numeroCaliente"></p>
+                <p id="numeroFrio"></p>
+            </div>
+            <p id="hit" class="resultado"></p>
+        </div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
