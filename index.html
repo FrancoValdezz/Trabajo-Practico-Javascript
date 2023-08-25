@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Dado</title>
 </head>
 <body>
+    <ul>
+        <li><a href="#">inicio</a></li>
+        <li>
+            <a href="#">Juegos ▾</a>
+            <ul class="dropdown">
+            </ul>
+        </li>
+        <li><a href="#">Favoritos</a>
+            <ul class="dropdown"></ul>
+        </li>
+    </ul>
+
     <div class="login-container">
         <form id="loginForm">
             <h2>¡Bienvenido!</h2>
@@ -33,6 +46,7 @@
             <p id="hit" class="resultado"></p>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

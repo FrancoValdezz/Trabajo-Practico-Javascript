@@ -21,7 +21,6 @@ function iniciarJuego(event) {
     };
     // guardo el objeto en el LocalStorage para usarlo mas adelante
     localStorage.setItem('usuario', JSON.stringify(usuario));
-    //NO OLVIDARME DE UTILIZAR EL DINERO!!!
     
     loginForm.style.display = 'none';
     conteinergame.style.display = 'block';
@@ -43,7 +42,7 @@ const lados = [
     'img/lado6.png',]
 
 
-// Creo un array que contiene las veces que sale cada lado
+// creo un array que contiene las veces que sale cada lado
 const ladosQueSalieron = [0,0,0,0,0,0]
 
 function tirarDado() {
@@ -80,5 +79,84 @@ function tirarDado() {
 
 btnTirar.addEventListener('click',tirarDado)
 
+// navbar y creacion de tarjeta sobre los juegos 
+const despegableItems = document.querySelectorAll('.despegable');
+
+document.addEventListener('DOMContentLoaded', async function () {
+    // Cargar el archivo JSON
+    const response = await fetch('data.json');
+    const juegos = await response.json();
+    
+    // Crear un elemento <ul> para mostrar los juegos
+    const juegosDropdown = document.querySelector('.dropdown');
+    const favoritos = [];
+
+    juegos.forEach(juego => {
+        const juegoElement = document.createElement('li');
+        const juegoDiv = document.createElement('div');
+        juegoDiv.classList.add('juego-card'); // Agrega la clase para los estilos
+
+        const tituloYBotonDiv = document.createElement('div');
+        tituloYBotonDiv.classList.add('titulo-y-boton'); // Agrega la clase para los estilos
+        
+        const h3Element = document.createElement('h3');
+        h3Element.textContent = juego.nombre;
+
+        const buttonElement = document.createElement('button');
+        buttonElement.textContent = 'Favorito';
+
+        const imgElement = document.createElement('img');
+        imgElement.src = juego.imagen;
+
+        const pElement = document.createElement('p');
+        pElement.textContent = juego.descripcion;
+
+        //ya con todos los elementos creados voy a hacer una alerta
+        buttonElement.addEventListener('click', function() {
+            if (favoritos.includes(juego)) {
+                favoritos.splice(favoritos.indexOf(juego), 1);
+                buttonElement.textContent = 'Favorito';
+            } else {
+                favoritos.push(juego);
+                buttonElement.textContent = 'Eliminar de Favoritos';
 
 
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'bottom-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Añadido a Favoritos'
+                });
+            }
+        });
+        //ahora va la alerta
+
+
+
+
+
+        tituloYBotonDiv.appendChild(h3Element);
+        tituloYBotonDiv.appendChild(buttonElement);
+        juegoDiv.appendChild(tituloYBotonDiv);
+        juegoDiv.appendChild(imgElement);
+        juegoDiv.appendChild(pElement);
+
+        juegoElement.appendChild(juegoDiv);
+        juegosDropdown.appendChild(juegoElement);
+    });
+
+
+
+
+});
+
+// nav bar añadida

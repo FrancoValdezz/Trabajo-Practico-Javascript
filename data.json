@@ -1,0 +1,17 @@
+[
+    {
+        "nombre": "Poker",
+        "imagen": "img/poker.jpeg",
+        "descripcion": "Un emocionante juego de cartas para jugar contra otras personas del mundo."
+    },
+    {
+        "nombre": "BlackJack",
+        "imagen": "img/blackjack.png",
+        "descripcion": "Trata de hacer 21 y ganale a la  casa."
+    },
+    {
+        "nombre":"Roulette",
+        "imagen":"img/ruleta.jpg",
+        "descripcion":"La clasica ruleta del 0 al 36, Proba suerte!"
+    }
+]
